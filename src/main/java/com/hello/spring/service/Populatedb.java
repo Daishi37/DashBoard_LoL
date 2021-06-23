@@ -1,4 +1,4 @@
-package com.hello.spring.populatedb;
+package com.hello.spring.service;
 
 import com.hello.spring.model.Hero;
 import com.hello.spring.model.Team;
@@ -7,26 +7,52 @@ import com.hello.spring.repository.HeroRepository;
 import com.hello.spring.repository.TeamRepository;
 import com.hello.spring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 
+import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-public class populatedb implements CommandLineRunner {
+//@SuppressWarnings("All")
+@Service
 
-    private final HeroRepository heroRepository;
-    private final TeamRepository teamRepository;
-    private final UserRepository userRepository;
+public class Populatedb {
 
-        @Autowired
-    public populatedb(HeroRepository heroRepository, TeamRepository teamRepository, UserRepository userRepository) {
+    private HeroRepository heroRepository;
+    private TeamRepository teamRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    public Populatedb(HeroRepository heroRepository, TeamRepository teamRepository, UserRepository userRepository) {
         this.heroRepository = heroRepository;
         this.teamRepository = teamRepository;
         this.userRepository = userRepository;
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+    public HeroRepository getHeroRepository() {
+        return heroRepository;
+    }
+
+    public void setHeroRepository(HeroRepository heroRepository) {
+        this.heroRepository = heroRepository;
+    }
+
+    public TeamRepository getTeamRepository() {
+        return teamRepository;
+    }
+
+    public void setTeamRepository(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void populate()  {
         //CREATE USER
         User User = new User();
         User.setAvatar("LIEN VERS MON AVATAR");
