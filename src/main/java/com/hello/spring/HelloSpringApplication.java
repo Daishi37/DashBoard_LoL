@@ -21,7 +21,7 @@ public class HelloSpringApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        p.populate();
-        p.populate();
+//        p.populate();
+//        p.populate();
     }
 }
